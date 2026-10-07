@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: clamp(16px, 4vw, 40px);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.35), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(236, 72, 153, 0.25), transparent 40%),
+        #0b0a1f;
+    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.app {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(18px, 3vw, 28px);
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 5.5vw, 2.6rem);
+    background: linear-gradient(90deg, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    margin: 10px 0 0;
+    font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+    color: #b8b5d6;
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 4 / 3;
+    background: #000;
+    border-radius: clamp(14px, 3vw, 22px);
+    overflow: hidden;
+    border: 2px solid rgba(168, 85, 247, 0.8);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.45),
+                0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+video,
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#enablecam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: clamp(10px, 2.5vw, 16px) clamp(20px, 5vw, 36px);
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(90deg, #7c3aed, #ec4899);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#enablecam:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.9);
+}
+
+#enablecam:disabled {
+    background: #555;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+#gesture {
+    margin: 0;
+    max-width: 100%;
+    padding: clamp(10px, 2vw, 14px) clamp(20px, 5vw, 36px);
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.guide {
+    width: 100%;
+}
+
+.guide h3 {
+    margin: 0 0 14px;
+    font-size: 1.1rem;
+    color: #d8b4fe;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(236, 72, 153, 0.7);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.25);
+}
+
+.card .emoji {
+    font-size: 2rem;
+}
+
+.card strong {
+    font-size: 0.95rem;
+}
+
+.card small {
+    color: #f9a8d4;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards .card:last-child {
+        grid-column: span 2;
+    }
+}

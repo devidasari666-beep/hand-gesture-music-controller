@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Gesture Music Controller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app">
+
+        <header class="header">
+            <h1>🎵 Hand Gesture Music Controller</h1>
+            <p class="subtitle">Make music in real time using only your hand and your webcam</p>
+        </header>
+
+        <section class="camera-container">
+            <video
+                id="video"
+                width="640"
+                height="480"
+                autoplay
+                playsinline
+                muted>
+            </video>
+
+            <button id="enablecam">Enable Camera</button>
+
+            <canvas
+                id="canvas"
+                width="640"
+                height="480">
+            </canvas>
+        </section>
+
+        <h2 id="gesture">Gesture: None</h2>
+
+        <section class="guide">
+            <h3>Gesture Guide</h3>
+            <div class="cards">
+                <div class="card">
+                    <span class="emoji">✊</span>
+                    <strong>Fist</strong>
+                    <small>Bass</small>
+                </div>
+                <div class="card">
+                    <span class="emoji">☝️</span>
+                    <strong>Index Finger</strong>
+                    <small>Kick</small>
+                </div>
+                <div class="card">
+                    <span class="emoji">✌️</span>
+                    <strong>Peace</strong>
+                    <small>Snare</small>
+                </div>
+                <div class="card">
+                    <span class="emoji">🤘</span>
+                    <strong>Rock</strong>
+                    <small>Synth</small>
+                </div>
+                <div class="card">
+                    <span class="emoji">🖐️</span>
+                    <strong>Open Palm</strong>
+                    <small>Hi-Hat</small>
+                </div>
+                <div class="card">
+                   <span class="emoji">👍</span>
+                   <strong>Thumb</strong>
+                   <small>Tom</small>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
