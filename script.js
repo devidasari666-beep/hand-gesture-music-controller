@@ -82,9 +82,9 @@ async function detect() {
 
     let gesture = "None";
 
-    if (hands.length > 0) {
-        gesture = getGesture(hands[0].keypoints);
-    }
+   if (hands.length > 0 && hands[0].score > 0.8) {
+    gesture = getGesture(hands[0].keypoints)
+}
 
     gestureText.textContent = "Gesture: " + gesture;
 
@@ -95,7 +95,7 @@ async function detect() {
         candidateCount = 1;
     }
 
-    if (candidateCount >= 5) {
+    if (candidateCount >= 8){
         if (gesture === "None") {
             lastGesture = "";
         } else if (gesture !== lastGesture) {
